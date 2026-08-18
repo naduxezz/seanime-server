@@ -6,12 +6,14 @@ WORKDIR /app
 
 RUN curl -L -o seanime.tar.gz https://github.com/5rahim/seanime/releases/download/v3.10.2/seanime-3.10.2_Linux_x86_64.tar.gz && tar -xzf seanime.tar.gz && rm seanime.tar.gz
 
-# Set host, port, and server password
+# Create config dir and copy your saved state
+RUN mkdir -p /root/.config/Seanime
+COPY config.toml /root/.config/Seanime/config.toml
+COPY seanime.db /root/.config/Seanime/seanime.db
+COPY extensions /root/.config/Seanime/extensions
+
 ENV SEANIME_HOST=0.0.0.0
 ENV SEANIME_PORT=43211
-ENV HOST=0.0.0.0
-ENV PORT=43211
-ENV SEANIME_SERVER_PASSWORD=mypassword123
 
 EXPOSE 43211
 
