@@ -10,8 +10,6 @@ RUN curl -L -o seanime.tar.gz https://github.com/5rahim/seanime/releases/downloa
 RUN mkdir -p /root/.config/Seanime
 COPY config.toml /root/.config/Seanime/config.toml
 COPY seanime.db /root/.config/Seanime/seanime.db
-COPY extensions /root/.config/Seanime/extensions
-
 ENV SEANIME_HOST=0.0.0.0
 ENV SEANIME_PORT=43211
 
